@@ -31,3 +31,28 @@ function transferTokenToRecipient(recipientPublicKey, amount, token) {
         document.getElementById('submitButton').value = 'Send Payment';
       });
 }
+
+function checkTokenBalance(walletPublicKey, tokenMint) {
+    axios.post('/check-token-balance', {
+        walletPublicKey: walletPublicKey,
+        tokenMint: tokenMint
+    })
+    .then(function (response) {
+        console.log(response);
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+}
+
+function checkSOLBalance(walletPublicKey) {
+    axios.post('/check-sol-balance', {
+        walletPublicKey: walletPublicKey
+    })
+    .then(function (response) {
+        console.log(response);
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+}

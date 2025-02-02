@@ -5,7 +5,7 @@ async function transferSOLToken(recipientPublicKeyString, amount) {
     try {
         // Connect to the network provider
         const connection = new solanaWeb3.Connection(
-            solanaWeb3.clusterApiUrl("devnet")
+            solanaWeb3.clusterApiUrl(process.env.CLUSTER)
         );
         // Load your wallet
         const senderPrivateKeyString = process.env.WALLET_SECRET_KEY;
@@ -21,9 +21,9 @@ async function transferSOLToken(recipientPublicKeyString, amount) {
         // Create a token transfer transaction
         const transaction = new solanaWeb3.Transaction().add(
             solanaWeb3.SystemProgram.transfer({
-            fromPubkey: senderKeypair.publicKey,
-            toPubkey: recipientPublicKey,
-            lamports: lamportsToSend,
+                fromPubkey: senderKeypair.publicKey,
+                toPubkey: recipientPublicKey,
+                lamports: lamportsToSend,
             })
         );
 

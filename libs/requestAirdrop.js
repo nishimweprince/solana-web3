@@ -3,7 +3,7 @@ const bs58 = require('bs58');
 
 async function requestAirdrop() {
     // Connect to cluster
-    const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
+    const connection = new Connection(clusterApiUrl(process.env.CLUSTER), 'confirmed');
 
     // Generate a new wallet keypair and airdrop SOL
     const senderPrivateKeyString = process.env.WALLET_SECRET_KEY;
